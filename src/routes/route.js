@@ -1,15 +1,10 @@
 const router = require('express').Router();
-const textModel = require('../models/textModel')
+const { addText } = require('../controllers/textController')
+const { signUp, login } = require('../controllers/userController')
+// const { authentication } = require('../middlewares/auth')
 
-router.post('/addText', async (req,res)=>{
-    try {
-        if(Object.keys(req.body).length ===0) res.status(400).send({status:false, message:"Write Something"})
-        req.body.text = req.body.text.toString();
-        const addText = await textModel.create(req.body)
-        return res.status(201).send({status:true, data:addText})
-    } catch (error) {
-       return res.status(500).send({status:false, message:error.message})
-    }
-})
+router.post('/addText', addText)
+router.post('/signUp', signUp)
+router.post('/login', login)
 
 module.exports = router;
