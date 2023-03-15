@@ -7,7 +7,7 @@ router.post("/addText", addText);
 router.post("/signup", signUp);
 router.post("/login", login);
 
-router.all("/*", async function (req, res) {
-  return res.status(404).send({ status: false, message: "Page Not Found." });
-});
+// router.all("/*", async function (req, res) {
+//   return res.status(404).send({ status: false, message: "Page Not Found." });
+// });
 module.exports = router;
